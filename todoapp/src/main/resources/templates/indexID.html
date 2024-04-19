@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>User Directory</title>
+</head>
+<body>
+<h1>User Directory</h1>
+<form>
+    <ol>
+        <li th:each="user :${users}"> <!-- 변수명을 users로 변경 -->
+            <span th:text="${user.id}"></span>
+        </li>
+    </ol>
+</form>
+</body>
+</html>
