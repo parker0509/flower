@@ -9,12 +9,19 @@
 </head>
 <body>
 <h1>User List</h1>
-<ul>
-    <li th:each="user : ${users}">
-        <span th:text="${user.username}"></span>
-        <!--<a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>-->
-    </li>
-</ul>
+<form th:action="@{/deleteTodo}" method="post">
+    <ol>
+        <!-- Thymeleaf의 반복문을 사용하여 각 사용자 정보를 표시 -->
+        <li th:each="user : ${users}">
+            <!-- 사용자의 ID를 출력 -->
+            <span th:text="${user.username}"></span>
+            <!--// user.id에서 username으로 바꿨더니 삭제됨 왜?-->
+            <!--text에 user.id를 출력해야하는데 그게 안됨!-->
+            <!-- 삭제 버튼을 추가하고, 사용자의 ID를 파라미터로 전달 -->
+            <button type="submit" name="id" th:value="${user.id}">삭제</button>
+        </li>
+    </ol>
+</form>x
 
 </body>
 </html>

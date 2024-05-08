@@ -50,16 +50,13 @@ public class TodoContorlloer {
     }
 
     @PostMapping("/deleteTodo")
-    public String deleteTodo(@RequestParam("id") Long id){
+    public String deleteTodo(@RequestParam("id") Long id) {
         // 주어진 ID를 사용하여 User 객체를 찾음
-        Optional<User> optionalTodo = userRepository.findById(id);
+        Optional<User> optionalUser = userRepository.findById(id);
 
         // User 객체가 존재하면 삭제
-        if (optionalTodo.isPresent())
-            // optionalTodo.isPresent() 는 isPresent는 객체에 값이있는지 확인하는 라이브러리
-             {
-            User user = optionalTodo.get();
-            userRepository.delete(user);
+        if (optionalUser.isPresent()) {
+            userRepository.deleteById(id);
         }
 
         // 삭제 후 "/" 경로로 리다이렉트
